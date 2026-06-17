@@ -7,7 +7,6 @@ interface BuyBoxProps {
   kind: ReportKind;
   companyId?: string;
   companyName: string;
-  /** Force the share toggle on by default (e.g. /import?share=1). */
   defaultShare?: boolean;
 }
 
@@ -45,63 +44,64 @@ export function BuyBox({ kind, companyId, companyName, defaultShare = false }: B
   }
 
   return (
-    <div className="rounded-2xl border border-line bg-surface p-6 shadow-lg shadow-ink-900/5">
-      <div className="flex items-baseline justify-between">
-        <span className="text-sm font-medium text-ink-700/70">
+    <aside className="report-card shadow-[0_16px_48px_rgba(7,23,47,0.08)]">
+      <div className="bg-ink-900 p-6 text-white">
+        <p className="text-sm font-light text-white/60">
           {kind === "import" ? "Import + report" : "Valuation report"}
-        </span>
-        <div className="text-right">
-          {share && (
-            <span className="mr-2 text-sm text-ink-700/40 line-through">{eur(base)}</span>
-          )}
-          <span className="text-3xl font-bold text-ink-900">{eur(total)}</span>
+        </p>
+        <h2 className="mt-1 text-2xl font-light tracking-normal">{companyName}</h2>
+        <div className="mt-4 flex items-end gap-2">
+          {share && <span className="pb-1 text-sm text-white/40 line-through">{eur(base)}</span>}
+          <span className="text-5xl font-light leading-none tracking-normal">{eur(total)}</span>
         </div>
       </div>
 
-      <p className="mt-2 text-sm text-ink-700/70">
-        {kind === "import"
-          ? `Pay first, then upload five years of statements for ${companyName}. No registration required.`
-          : `Full AI valuation report for ${companyName}, generated instantly.`}
-      </p>
+      <div className="p-6">
+        <p className="text-sm font-light leading-7 text-ink-700/70">
+          {kind === "import"
+            ? `Pay first, then upload five years of statements for ${companyName}. No registration required.`
+            : `Full AI valuation report for ${companyName}, generated after checkout.`}
+        </p>
 
-      <label className="mt-5 flex cursor-pointer items-start gap-3 rounded-xl border border-line bg-surface-muted p-4">
-        <input
-          type="checkbox"
-          checked={share}
-          onChange={(e) => setShare(e.target.checked)}
-          className="mt-0.5 h-4 w-4 accent-brand-600"
-        />
-        <span className="text-sm">
-          <span className="font-medium text-ink-900">
-            Let us reuse this company&apos;s figures — save {eur(PRICES.shareDiscount)}
+        <label className="mt-5 flex cursor-pointer items-start gap-3 rounded-2xl border border-line bg-surface-muted p-4 transition hover:border-brand-300">
+          <input
+            type="checkbox"
+            checked={share}
+            onChange={(e) => setShare(e.target.checked)}
+            className="mt-1 h-4 w-4 accent-brand-600"
+          />
+          <span className="text-sm">
+            <span className="font-semibold text-ink-900">
+              Reuse this company's figures and save {eur(PRICES.shareDiscount)}
+            </span>
+            <span className="mt-1 block font-light leading-6 text-ink-700/60">
+              We add the company to the catalogue. Only financial statement figures are
+              stored.
+            </span>
           </span>
-          <span className="mt-0.5 block text-ink-700/60">
-            We add the company to our catalogue so it can be valued again. Only the
-            financial statement figures are stored.
-          </span>
-        </span>
-      </label>
+        </label>
 
-      <button
-        onClick={checkout}
-        disabled={loading}
-        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-3 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-60"
-      >
-        {loading ? "Redirecting…" : `Pay ${eur(total)} & continue`}
-      </button>
+        <button
+          onClick={checkout}
+          disabled={loading}
+          className="primary-button mt-5 w-full disabled:pointer-events-none disabled:opacity-60"
+        >
+          {loading ? "Redirecting..." : `Pay ${eur(total)} and continue`}
+        </button>
 
-      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+        {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
-      <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-ink-700/50">
-        <LockIcon /> Secure checkout via Stripe · No account needed
-      </p>
-    </div>
+        <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-ink-700/50">
+          <LockIcon /> Secure checkout via Stripe. No account needed.
+        </p>
+      </div>
+    </aside>
   );
 }
 
 function LockIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect x="4" y="10" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="2" />
       <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2" />
     </svg>

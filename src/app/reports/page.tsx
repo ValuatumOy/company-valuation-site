@@ -9,51 +9,80 @@ export default async function ReportsPage() {
   const companies = await featuredCompanies(12);
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14">
-      <div className="max-w-2xl">
-        <h1 className="text-3xl font-bold tracking-tight text-ink-900 md:text-4xl">
-          Browse valuation reports
-        </h1>
-        <p className="mt-3 text-ink-700/70">
-          Search any company to check availability, or pick one of the examples below.
-          Companies marked “Report ready” already have financials on file.
-        </p>
-      </div>
-
-      <div className="mt-8">
-        <SearchBar />
-      </div>
-
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {companies.map((c) => (
-          <Link
-            key={c.id}
-            href={`/company/${c.id}`}
-            className="group rounded-2xl border border-line bg-surface p-6 transition hover:border-brand-300 hover:shadow-lg hover:shadow-ink-900/5"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="font-semibold text-ink-900 group-hover:text-brand-600">
-                {c.name}
-              </h3>
-              {c.hasFinancials ? (
-                <span className="shrink-0 rounded-full bg-accent-500/10 px-2.5 py-1 text-xs font-semibold text-accent-500">
-                  Ready
-                </span>
-              ) : (
-                <span className="shrink-0 rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-600">
-                  Import
-                </span>
-              )}
-            </div>
-            <p className="mt-2 text-sm text-ink-700/60">
-              {c.city} · {c.industry}
+    <>
+      <section className="dark-panel py-16 text-white md:py-20">
+        <div className="absolute inset-0 bg-grid opacity-70" aria-hidden="true" />
+        <div className="container-shell relative z-10">
+          <div className="max-w-2xl">
+            <span className="section-eyebrow section-eyebrow-light">Reports</span>
+            <h1 className="section-headline section-headline-light">
+              Browse valuation reports.
+            </h1>
+            <p className="section-sub text-white/60">
+              Search any company to check availability, or pick one of the examples
+              below. Ready reports already have financials on file.
             </p>
-            <p className="mt-4 text-sm font-medium text-brand-600">
-              View report →
-            </p>
-          </Link>
-        ))}
-      </div>
-    </div>
+          </div>
+          <div className="mt-10">
+            <SearchBar />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell bg-surface-muted">
+        <div className="container-shell">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {companies.map((c) => (
+              <Link key={c.id} href={`/company/${c.id}`} className="report-card group flex flex-col">
+                <div className="report-thumb">
+                  <span className="absolute left-4 top-4 rounded bg-white/10 px-2.5 py-1 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
+                    {c.hasFinancials ? "Ready" : "Import"}
+                  </span>
+                  <div className="report-lines" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-brand-600">
+                    {c.city}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold text-ink-900 transition group-hover:text-brand-600">
+                    {c.name}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm font-light leading-7 text-ink-700/60">
+                    {c.industry}
+                  </p>
+                  <div className="mt-5 flex items-center justify-between gap-3">
+                    {c.hasFinancials ? (
+                      <span className="rounded bg-brand-50 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-700">
+                        Report ready
+                      </span>
+                    ) : (
+                      <span className="rounded bg-surface-muted px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-700/60">
+                        Import needed
+                      </span>
+                    )}
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 transition group-hover:gap-3">
+                      View <ArrowIcon />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { UploadForm } from "@/components/UploadForm";
 
 export const metadata = { title: "Upload your financial statements" };
@@ -11,34 +12,41 @@ export default async function UploadPage({
   const paid = Boolean(session_id || demo);
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-14">
-      <div className="rounded-2xl border border-accent-500/30 bg-accent-500/5 px-5 py-3 text-sm font-medium text-accent-500">
-        ✓ Payment received — no account needed. Upload your statements below.
-      </div>
+    <>
+      <section className="dark-panel py-16 text-white md:py-20">
+        <div className="absolute inset-0 bg-grid opacity-70" aria-hidden="true" />
+        <div className="container-shell relative z-10 max-w-3xl">
+          <span className="section-eyebrow section-eyebrow-light">Upload statements</span>
+          <h1 className="section-headline section-headline-light">
+            Upload five years of financial statements.
+          </h1>
+          <p className="section-sub text-white/60">
+            Add the official annual financial statements as PDF files. We parse the
+            figures and generate your valuation report.
+          </p>
+        </div>
+      </section>
 
-      <h1 className="mt-8 text-3xl font-bold tracking-tight text-ink-900">
-        Upload five years of financial statements
-      </h1>
-      <p className="mt-3 text-ink-700/70">
-        Add the official annual financial statements (tilinpäätös) for the last five
-        years as PDF files. We parse the income statement, balance sheet and cash flow,
-        then generate your valuation report.
-      </p>
+      <section className="section-shell bg-surface-muted">
+        <div className="container-shell mx-auto max-w-3xl">
+          <div className="mb-8 rounded-[24px] border border-brand-200 bg-brand-50 px-5 py-4 text-sm font-medium text-brand-700">
+            Payment received. No account needed.
+          </div>
 
-      {!paid && (
-        <p className="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-800">
-          We couldn&apos;t confirm a payment for this session. If you reached this page
-          by mistake, please start from the{" "}
-          <a href="/import" className="font-medium underline">
-            import page
-          </a>
-          .
-        </p>
-      )}
+          {!paid && (
+            <p className="mb-8 rounded-[24px] border border-amber-300 bg-amber-50 p-5 text-sm text-amber-800">
+              We could not confirm a payment for this session. If you reached this page
+              by mistake, please start from the{" "}
+              <Link href="/import" className="font-semibold underline">
+                import page
+              </Link>
+              .
+            </p>
+          )}
 
-      <div className="mt-8">
-        <UploadForm sessionId={session_id ?? null} />
-      </div>
-    </div>
+          <UploadForm sessionId={session_id ?? null} />
+        </div>
+      </section>
+    </>
   );
 }

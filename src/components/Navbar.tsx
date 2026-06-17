@@ -1,51 +1,61 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV = [
+  { href: "/", label: "Home" },
   { href: "/reports", label: "Reports" },
-  { href: "/#how-it-works", label: "How it works" },
-  { href: "/methodology", label: "Methodology" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/methodology", label: "Methodology" },
+  { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ];
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-surface/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-ink-900 text-sm font-bold text-white">
-            V
-          </span>
-          <span className="text-ink-900">
-            Valuatum<span className="text-brand-600"> Reports</span>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-900/95 text-white backdrop-blur-xl">
+      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center gap-8 px-[var(--page-x)]">
+        <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="Valuatum reports">
+          <Image
+            src="/images/logo.svg"
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-md"
+            priority
+          />
+          <span className="flex flex-col leading-none">
+            <span className="text-base font-semibold tracking-wide text-white">Valuatum</span>
+            <span className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.16em] text-white/50">
+              AI Valuation Reports
+            </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="ml-auto hidden items-center gap-7 lg:flex" aria-label="Main navigation">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-ink-700/80 transition hover:text-ink-900"
+              className="group relative text-sm font-normal tracking-wide text-white/70 transition hover:text-white"
             >
               {item.label}
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-brand-300 transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-3 lg:ml-0">
           <Link
             href="/reports"
-            className="hidden text-sm font-medium text-ink-700 hover:text-ink-900 sm:block"
+            className="hidden min-h-11 items-center rounded-full border border-white/20 px-4 text-sm font-medium text-white/80 transition hover:border-white/50 hover:text-white sm:inline-flex"
           >
-            Browse
+            Browse reports
           </Link>
-          <Link
-            href="/#search"
-            className="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
-          >
-            Get a report
-          </Link>
+          <div className="hidden sm:block">
+            <Link href="/#search" className="primary-button px-4 py-2 text-sm">
+              Get a report
+            </Link>
+          </div>
         </div>
       </div>
     </header>

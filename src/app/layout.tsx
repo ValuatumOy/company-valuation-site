@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     template: "%s | Valuatum AI Valuation Reports",
   },
   description:
-    "Instant, analyst-grade valuation reports for private companies. Search any Finnish company, or import five years of financial statements, and buy a full AI valuation report from €10.",
+    "Instant, analyst-grade valuation reports for private companies. Search any Finnish company, or import five years of financial statements, and buy a full AI valuation report from EUR 10.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   openGraph: {
     title: "AI Valuation Reports for Private Companies",
     description:
-      "Search any company. Buy an analyst-grade AI valuation report in minutes — from €10.",
+      "Search any company. Buy an analyst-grade AI valuation report in minutes from EUR 10.",
     type: "website",
   },
 };
@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

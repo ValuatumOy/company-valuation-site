@@ -13,7 +13,7 @@ const DOCS: Record<string, { title: string; body: string[] }> = {
   privacy: {
     title: "Privacy Policy",
     body: [
-      "We process the minimum data needed to deliver your report: your payment details (handled by Stripe), the receipt email used to send the finished PDF, and — for imports — the financial statements you upload.",
+      "We process the minimum data needed to deliver your report: your payment details handled by Stripe, the receipt email used to send the finished PDF, and for imports the financial statements you upload.",
       "If you choose the data-sharing option, the financial statement figures of the imported company are retained and added to our catalogue. You can request their removal.",
       "We do not require account registration to purchase a report.",
       "This is placeholder legal copy. Replace it with a GDPR-compliant policy reviewed by Valuatum's legal counsel before launch.",
@@ -43,13 +43,24 @@ export default async function LegalPage({
   if (!content) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16">
-      <h1 className="text-3xl font-bold tracking-tight text-ink-900">{content.title}</h1>
-      <div className="mt-8 space-y-5 text-ink-700/80">
-        {content.body.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
-      </div>
-    </div>
+    <>
+      <section className="dark-panel py-16 text-white md:py-20">
+        <div className="absolute inset-0 bg-grid opacity-70" aria-hidden="true" />
+        <div className="container-shell relative z-10 max-w-3xl">
+          <span className="section-eyebrow section-eyebrow-light">Legal</span>
+          <h1 className="section-headline section-headline-light">{content.title}</h1>
+        </div>
+      </section>
+
+      <section className="section-shell bg-surface-muted">
+        <article className="container-shell mx-auto max-w-3xl">
+          <div className="report-card space-y-5 p-8 text-base font-light leading-8 text-ink-700/70">
+            {content.body.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </article>
+      </section>
+    </>
   );
 }

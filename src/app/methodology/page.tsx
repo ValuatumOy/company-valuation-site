@@ -2,65 +2,78 @@ export const metadata = { title: "Methodology" };
 
 export default function MethodologyPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16">
-      <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">
-        Methodology
-      </p>
-      <h1 className="mt-3 text-3xl font-bold tracking-tight text-ink-900 md:text-4xl">
-        How the valuations are built
-      </h1>
-      <p className="mt-4 text-lg text-ink-700/70">
-        Every report combines Valuatum&apos;s structured financial data with a
-        standardised valuation framework — the same logic professional analysts have
-        used in our tools since 2000, applied automatically and explained in full.
-      </p>
+    <>
+      <section className="dark-panel py-16 text-white md:py-20">
+        <div className="absolute inset-0 bg-grid opacity-70" aria-hidden="true" />
+        <div className="container-shell relative z-10 max-w-4xl">
+          <span className="section-eyebrow section-eyebrow-light">Methodology</span>
+          <h1 className="section-headline section-headline-light">
+            How the valuations are built.
+          </h1>
+          <p className="section-sub text-white/60">
+            Every report combines Valuatum's structured financial data with a
+            standardised valuation framework, applied automatically and explained in
+            full.
+          </p>
+        </div>
+      </section>
 
-      <div className="mt-12 space-y-10">
-        <Block title="1. Data foundation">
-          For companies in our dataset we use official Finnish financial statements,
-          normalised into a comparable five-year series. For imported companies we
-          extract the same figures from the statements you upload. Either way the report
-          shows the underlying numbers, so nothing is a black box.
-        </Block>
-        <Block title="2. Discounted cash flow">
-          We build an explicit forecast from historical performance, derive a
-          WACC-based discount rate, and add a terminal value. Every assumption — growth,
-          margins, capital intensity, discount rate — is printed in the report so it can
-          be challenged.
-        </Block>
-        <Block title="3. Market comparables">
-          The company is benchmarked against relevant listed and private peers on
-          revenue, EBITDA and earnings multiples, producing a market-implied range that
-          sits alongside the DCF.
-        </Block>
-        <Block title="4. Reverse valuation">
-          We invert the model to show what the implied valuation actually requires the
-          business to deliver — a sanity check on whether the number is realistic.
-        </Block>
-        <Block title="5. Scenarios & risk">
-          Bull, base and bear cases isolate the drivers that matter most, and a
-          structured risk assessment scores liquidity, leverage, concentration and
-          going-concern signals.
-        </Block>
-        <Block title="6. Conclusion">
-          The report lands on a single defensible valuation range with the reasoning
-          behind it — the investment case, not just a dashboard of metrics.
-        </Block>
-      </div>
+      <section className="section-shell bg-surface-muted">
+        <div className="container-shell mx-auto max-w-3xl">
+          <div className="space-y-5">
+            <Block n="01" title="Data foundation">
+              For companies in our dataset we use official financial statements,
+              normalised into a comparable five-year series. For imported companies we
+              extract the same figures from the statements you upload.
+            </Block>
+            <Block n="02" title="Discounted cash flow">
+              We build an explicit forecast from historical performance, derive a
+              WACC-based discount rate, and add a terminal value. The main assumptions
+              are printed in the report.
+            </Block>
+            <Block n="03" title="Market comparables">
+              The company is benchmarked against relevant peers on revenue, EBITDA and
+              earnings multiples, producing a market-implied range alongside the DCF.
+            </Block>
+            <Block n="04" title="Reverse valuation">
+              The model is inverted to show what the implied valuation requires the
+              business to deliver.
+            </Block>
+            <Block n="05" title="Scenarios and risk">
+              Bull, base and bear cases isolate the drivers that matter most, while the
+              risk assessment scores liquidity, leverage, concentration and going-concern
+              signals.
+            </Block>
+            <Block n="06" title="Conclusion">
+              The report lands on a defensible valuation range with the reasoning behind
+              it.
+            </Block>
+          </div>
 
-      <p className="mt-12 rounded-xl border border-line bg-surface-muted p-5 text-sm text-ink-700/70">
-        Reports are generated for informational purposes only and do not constitute
-        investment advice or a recommendation to buy or sell any security.
-      </p>
-    </div>
+          <p className="mt-10 rounded-[24px] border border-line bg-white p-6 text-sm font-light leading-7 text-ink-700/70">
+            Reports are generated for informational purposes only and do not constitute
+            investment advice or a recommendation to buy or sell any security.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({
+  n,
+  title,
+  children,
+}: {
+  n: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section>
-      <h2 className="text-xl font-semibold text-ink-900">{title}</h2>
-      <p className="mt-3 text-ink-700/70">{children}</p>
+    <section className="report-card p-7">
+      <p className="text-xs font-bold uppercase tracking-[0.12em] text-brand-600">{n}</p>
+      <h2 className="mt-3 text-2xl font-light text-ink-900">{title}</h2>
+      <p className="mt-3 text-sm font-light leading-7 text-ink-700/70">{children}</p>
     </section>
   );
 }

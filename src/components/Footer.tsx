@@ -1,20 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-surface-muted">
-      <div className="mx-auto max-w-6xl px-5 py-14">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-2 font-semibold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-ink-900 text-sm font-bold text-white">
-                V
+    <footer className="bg-ink-950 px-[var(--page-x)] py-12 text-white">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3" aria-label="Valuatum reports">
+              <Image src="/images/logo.svg" alt="" width={36} height={36} className="h-9 w-9 rounded-md" />
+              <span className="flex flex-col leading-none">
+                <span className="text-base font-semibold tracking-wide">Valuatum</span>
+                <span className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.16em] text-white/40">
+                  AI Valuation Reports
+                </span>
               </span>
-              <span>Valuatum Reports</span>
-            </div>
-            <p className="mt-4 max-w-xs text-sm text-ink-700/70">
-              Analyst-grade AI valuation reports for private companies. Built by
-              Valuatum — equity analysis tooling since 2000.
+            </Link>
+            <p className="mt-5 max-w-xs text-sm font-light leading-7 text-white/50">
+              Analyst-grade AI valuation reports for private companies. Built on
+              structured financial data, transparent methodology and Valuatum expertise
+              since 2000.
             </p>
           </div>
 
@@ -30,7 +35,7 @@ export function Footer() {
           <FooterCol
             title="Company"
             links={[
-              { href: "/about", label: "About" },
+              { href: "/about", label: "About Valuatum" },
               { href: "/faq", label: "FAQ" },
               { href: "https://company-valuation.com", label: "company-valuation.com" },
               { href: "https://valuatum.com", label: "Valuatum.com" },
@@ -46,10 +51,11 @@ export function Footer() {
           />
         </div>
 
-        <div className="mt-12 border-t border-line pt-6 text-xs text-ink-700/60">
-          <p>
-            © {new Date().getFullYear()} Valuatum Oy. Reports are generated for
-            informational purposes only and do not constitute investment advice.
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs leading-6 text-white/30">
+          <p>&copy; {new Date().getFullYear()} Valuatum Oy - Helsinki, Finland - Est. 2000</p>
+          <p className="max-w-xl md:text-right">
+            Reports are generated for informational purposes only. Not investment
+            advice. Past performance is not indicative of future results.
           </p>
         </div>
       </div>
@@ -66,14 +72,13 @@ function FooterCol({
 }) {
   return (
     <div>
-      <h4 className="text-sm font-semibold text-ink-900">{title}</h4>
-      <ul className="mt-4 space-y-2.5">
+      <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">
+        {title}
+      </h4>
+      <ul className="mt-4 space-y-2">
         {links.map((l) => (
           <li key={l.href}>
-            <Link
-              href={l.href}
-              className="text-sm text-ink-700/70 transition hover:text-brand-600"
-            >
+            <Link href={l.href} className="text-sm text-white/50 transition hover:text-white">
               {l.label}
             </Link>
           </li>
