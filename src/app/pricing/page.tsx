@@ -28,7 +28,7 @@ export default function PricingPage() {
             there&apos;s nothing to import, so the report is €10.
           </Item>
           <Item q="How does the data-sharing discount work?">
-            If you let us reuse a company&apos;s figures, we take €2 off and add the
+            If you let us reuse a company&apos;s figures, we take €5 off and add the
             company to our catalogue so it can be valued again later. Only the financial
             statement figures are stored.
           </Item>

@@ -12,7 +12,7 @@ company valuations.
   - Company is in our dataset → buy an **existing report for €10**, generated instantly.
   - Not in our dataset → **import five years of statements for €15**; pay first, then
     upload PDFs (no registration), and we generate the report.
-- **Data-sharing discount** — let us reuse a company's figures for **€2 off**; the
+- **Data-sharing discount** — let us reuse a company's figures for **€5 off** (import+share = €10); the
   company is added to our catalogue automatically.
 - **Stripe Checkout** — no account required; the report (or upload step) is delivered
   after payment.
@@ -84,4 +84,4 @@ All prices live in `src/lib/pricing.ts` and are overridable via env (EUR cents):
 | ----------------------- | ------- | ------------------------------------ |
 | `PRICE_EXISTING_REPORT` | `1000`  | €10 — we already hold the financials |
 | `PRICE_IMPORT_REPORT`   | `1500`  | €15 — user imports 5y statements     |
-| `PRICE_SHARE_DISCOUNT`  | `200`   | €2 off for sharing data              |
+| `PRICE_SHARE_DISCOUNT`  | `500`   | €5 off for sharing data (→ €10)      |

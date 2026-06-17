@@ -102,7 +102,7 @@ export default function HomePage() {
               body="Drop in five years of financial statements as PDFs. We import them after payment — no registration — and generate the same full report."
               points={[
                 "Pay first, then import — no account needed",
-                "Share your data for €2 off and help expand the catalogue",
+                "Share your data for €5 off and help expand the catalogue",
                 "Same analyst-grade output as existing reports",
               ]}
               cta={{ href: "/import", label: "Start an import" }}

@@ -4,7 +4,7 @@
 export const PRICES = {
   existingReport: Number(process.env.PRICE_EXISTING_REPORT ?? 1000), // €10.00
   importReport: Number(process.env.PRICE_IMPORT_REPORT ?? 1500), // €15.00
-  shareDiscount: Number(process.env.PRICE_SHARE_DISCOUNT ?? 200), // €2.00 off
+  shareDiscount: Number(process.env.PRICE_SHARE_DISCOUNT ?? 500), // €5.00 off (import+share = €10)
 } as const;
 
 export type ReportKind = "existing" | "import";

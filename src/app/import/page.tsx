@@ -43,7 +43,7 @@ export default async function ImportPage({
               get for a company already in our dataset.
             </Step>
             <Step n={4} title="Optionally share your data">
-              Allow us to reuse the figures and get €2 off — the company is added to our
+              Allow us to reuse the figures and get €5 off — the company is added to our
               catalogue so it can be valued again later.
             </Step>
           </ol>

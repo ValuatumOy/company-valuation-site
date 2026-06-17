@@ -15,7 +15,7 @@ const FAQ = [
   },
   {
     q: "What's the data-sharing discount?",
-    a: "If you allow us to reuse an imported company's figures, we take €2 off and add the company to our catalogue so it can be valued again later. Only the financial statement figures are stored.",
+    a: "If you allow us to reuse an imported company's figures, we take €5 off (bringing the import to €10) and add the company to our catalogue so it can be valued again later. Only the financial statement figures are stored.",
   },
   {
     q: "Where does the data come from?",
