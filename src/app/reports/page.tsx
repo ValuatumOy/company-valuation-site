@@ -10,7 +10,10 @@ export default async function ReportsPage() {
 
   return (
     <>
-      <section className="dark-panel py-16 text-white md:py-20">
+      <section
+        className="dark-panel relative z-20 py-16 text-white md:py-20"
+        style={{ overflow: "visible" }}
+      >
         <div className="absolute inset-0 bg-grid opacity-70" aria-hidden="true" />
         <div className="container-shell relative z-10">
           <div className="max-w-2xl">
@@ -29,7 +32,7 @@ export default async function ReportsPage() {
         </div>
       </section>
 
-      <section className="section-shell bg-surface-muted">
+      <section className="section-shell relative z-0 bg-surface-muted">
         <div className="container-shell">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {companies.map((c) => (
