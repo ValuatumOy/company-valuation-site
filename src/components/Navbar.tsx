@@ -4,9 +4,11 @@ import Link from "next/link";
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/reports", label: "Reports" },
+  { href: "/sample-report", label: "Sample" },
+  { href: "/valuation-calculator", label: "Calculator" },
+  { href: "/market-multiples", label: "Multiples" },
+  { href: "/case-studies", label: "Cases" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/methodology", label: "Methodology" },
-  { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ];
 
@@ -31,7 +33,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+        <nav className="ml-auto hidden items-center gap-5 lg:flex" aria-label="Main navigation">
           {NAV.map((item) => (
             <Link
               key={item.href}

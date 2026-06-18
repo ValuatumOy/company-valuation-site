@@ -30,9 +30,9 @@ export default function HomePage() {
               AI valuation reports for any private company.
             </h1>
             <p className="mx-auto mt-6 max-w-xs text-base font-light leading-7 text-white/60 md:max-w-[680px] md:text-lg md:leading-8">
-              Search a company, buy an existing report, or import five years of
-              statements. Each PDF includes DCF, comparables, reverse valuation,
-              scenarios, risk assessment and a defensible valuation range.
+              Search a company and buy a ready report, import your own statements, or let
+              us fetch the data for you. Each PDF includes DCF, comparables, reverse
+              valuation, scenarios, risk assessment and a defensible valuation range.
             </p>
 
             <div className="mx-auto mt-10 flex w-full justify-center">
@@ -63,6 +63,39 @@ export default function HomePage() {
           <TrustBarItem label="Five-year financial history" />
           <TrustBarItem label="Secure Stripe checkout" />
           <TrustBarItem label="Import flow for missing companies" />
+        </div>
+      </section>
+
+      <section className="section-shell border-b border-line bg-white">
+        <div className="container-shell">
+          <div className="mb-12 max-w-2xl">
+            <span className="section-eyebrow">Before you buy</span>
+            <h2 className="section-headline">Inspect the output and test the range.</h2>
+            <p className="section-sub">
+              Use the free tools to understand the report format, the rough valuation
+              scale and the market data behind the first estimate.
+            </p>
+          </div>
+          <div className="grid gap-px overflow-hidden rounded-[24px] border border-line bg-line md:grid-cols-3">
+            <ToolLink
+              href="/sample-report"
+              label="01"
+              title="Sample report"
+              body="Open a draft Athlos Oy valuation report and inspect the PDF structure before checkout."
+            />
+            <ToolLink
+              href="/valuation-calculator"
+              label="02"
+              title="Valuation calculator"
+              body="Enter revenue, margin and net debt to see a rough market-multiple valuation range."
+            />
+            <ToolLink
+              href="/market-multiples"
+              label="03"
+              title="Market multiples"
+              body="Review the listed-company peer signals used to frame the calculator ranges."
+            />
+          </div>
         </div>
       </section>
 
@@ -126,9 +159,9 @@ export default function HomePage() {
               Look up a company by name or business ID and see instantly whether the
               financials are already available.
             </Step>
-            <Step n="02" title="Buy or import">
-              Buy a ready report, or import five years of statements after checkout if
-              the company is not in the catalogue yet.
+            <Step n="02" title="Buy, import or fetch">
+              Buy a ready report; or, if the company is not in the catalogue, import five
+              years of statements yourself — or let us fetch them via CreditSafe.
             </Step>
             <Step n="03" title="Receive the PDF">
               Get the analyst-style valuation report with full sections, assumptions and
@@ -141,24 +174,50 @@ export default function HomePage() {
       <section className="section-shell border-y border-line bg-brand-50/60">
         <div className="container-shell grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <span className="section-eyebrow">Two ways in</span>
-            <h2 className="section-headline">We have the data, or you bring it.</h2>
+            <span className="section-eyebrow">Three ways in</span>
+            <h2 className="section-headline">We have it, you bring it, or we fetch it.</h2>
             <p className="section-sub">
-              The visual model follows the reference site's method block: a concise
-              explanation beside a report-style preview that makes the output tangible.
+              Whichever route fits your data, the output is the same full report. Pick the
+              one that matches what you have on hand.
             </p>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              <Pillar title="Existing reports">
-                Generated from Valuatum's stored financial statement data when the
-                company is already covered.
+            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+              <Pillar title="On file — €100">
+                Generated instantly from Valuatum's stored statements when the company is
+                already covered.
               </Pillar>
-              <Pillar title="Imported reports">
-                Built from official PDF statements you upload after payment, using the
-                same valuation framework.
+              <Pillar title="Import — €150">
+                Built from PDF statements you upload after payment. €100 if you share the
+                figures.
+              </Pillar>
+              <Pillar title="We fetch — €200">
+                No statements? We retrieve the official figures via CreditSafe and generate
+                the report.
               </Pillar>
             </div>
           </div>
           <ReportMockup />
+        </div>
+      </section>
+
+      <section className="section-shell bg-white">
+        <div className="container-shell grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <span className="section-eyebrow">Case studies</span>
+            <h2 className="section-headline">How a software company valuation was built.</h2>
+            <p className="section-sub">
+              See how the report moves from normalised financials to market multiples,
+              DCF scenarios, risk signals and a final valuation range.
+            </p>
+            <Link href="/case-studies" className="primary-button mt-8">
+              Read the case study
+            </Link>
+          </div>
+          <div className="overflow-hidden rounded-[24px] border border-line bg-line">
+            <CasePreviewRow label="01" title="Normalise financials" value="5y history" />
+            <CasePreviewRow label="02" title="Frame market reference" value="EV / EBITDA" />
+            <CasePreviewRow label="03" title="Build scenarios" value="Bear / base / bull" />
+            <CasePreviewRow label="04" title="Explain the range" value="Conclusion" />
+          </div>
         </div>
       </section>
 
@@ -257,6 +316,33 @@ function TrustBarItem({ label }: { label: string }) {
   );
 }
 
+function ToolLink({
+  href,
+  label,
+  title,
+  body,
+}: {
+  href: string;
+  label: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <Link href={href} className="group bg-white p-8 transition hover:bg-brand-50/60">
+      <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-brand-600">
+        {label}
+      </span>
+      <h3 className="mt-5 text-xl font-normal text-ink-900 transition group-hover:text-brand-600">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm font-light leading-7 text-ink-700/60">{body}</p>
+      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 transition group-hover:gap-3">
+        Open <ArrowIcon />
+      </span>
+    </Link>
+  );
+}
+
 function ReportSample({
   label,
   title,
@@ -323,6 +409,24 @@ function Pillar({ title, children }: { title: string; children: React.ReactNode 
     <div className="border-t-2 border-brand-300 pt-5">
       <h3 className="text-sm font-semibold text-ink-900">{title}</h3>
       <p className="mt-2 text-sm font-light leading-7 text-ink-700/60">{children}</p>
+    </div>
+  );
+}
+
+function CasePreviewRow({
+  label,
+  title,
+  value,
+}: {
+  label: string;
+  title: string;
+  value: string;
+}) {
+  return (
+    <div className="grid grid-cols-[64px_1fr_auto] items-center gap-4 border-b border-line bg-white p-5 last:border-b-0">
+      <span className="font-mono text-xs font-semibold text-brand-600">{label}</span>
+      <span className="text-sm font-semibold text-ink-900">{title}</span>
+      <span className="text-right text-xs font-medium text-ink-700/45">{value}</span>
     </div>
   );
 }
@@ -453,11 +557,11 @@ const SAMPLE_CARDS = [
     href: "/import",
   },
   {
-    label: "Share",
-    title: "Add to the catalogue",
-    desc: "Choose the sharing discount and help expand coverage while keeping the same full report output.",
-    tags: ["Discount", "Catalogue", "Reusable"],
-    href: "/import?share=1",
+    label: "Fetch",
+    title: "We fetch the data for you",
+    desc: "No statements at hand? We retrieve the official financials via CreditSafe and generate the same full report.",
+    tags: ["CreditSafe", "No upload", "PDF"],
+    href: "/import",
   },
 ];
 

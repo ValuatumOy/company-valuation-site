@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCompany } from "@/lib/companies";
 import { BuyBox } from "@/components/BuyBox";
+import { ImportRoutes } from "@/components/ImportRoutes";
 
 export const dynamic = "force-dynamic";
 
@@ -86,10 +87,10 @@ export default async function CompanyPage({
             ) : (
               <div className="space-y-5">
                 <div className="rounded-[24px] border border-brand-200 bg-brand-50 p-5 text-sm font-light leading-7 text-ink-700/70">
-                  We do not hold financial statements for {company.name} yet. Buy the
-                  import report and upload five years of statements right after payment.
+                  We do not hold financial statements for {company.name} yet. Choose how
+                  to get the report: upload the statements yourself, or let us fetch them.
                 </div>
-                <BuyBox kind="import" companyId={company.id} companyName={company.name} />
+                <ImportRoutes companyName={company.name} />
               </div>
             )}
           </div>

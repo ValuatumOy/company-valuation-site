@@ -1,13 +1,13 @@
-import { BuyBox } from "@/components/BuyBox";
+import { ImportRoutes } from "@/components/ImportRoutes";
 
 export const metadata = { title: "Import statements and get a report" };
 
 export default async function ImportPage({
   searchParams,
 }: {
-  searchParams: Promise<{ name?: string; share?: string }>;
+  searchParams: Promise<{ name?: string }>;
 }) {
-  const { name, share } = await searchParams;
+  const { name } = await searchParams;
   const companyName = name?.trim() || "your company";
 
   return (
@@ -17,11 +17,12 @@ export default async function ImportPage({
         <div className="container-shell relative z-10">
           <span className="section-eyebrow section-eyebrow-light">Import and generate</span>
           <h1 className="section-headline section-headline-light">
-            Not in our dataset? Bring the numbers.
+            Not in our dataset? Two ways to get the report.
           </h1>
           <p className="section-sub mx-auto text-white/60">
-            Pay for the import report, then upload five years of financial statements
-            as PDFs. We generate the full valuation report for {companyName}.
+            Upload five years of statements yourself, or let us fetch the official
+            financials via CreditSafe. Either way we generate the full valuation report
+            for {companyName}.
           </p>
         </div>
       </section>
@@ -29,29 +30,33 @@ export default async function ImportPage({
       <section className="section-shell bg-surface-muted">
         <div className="container-shell grid gap-10 lg:grid-cols-[1fr_380px]">
           <div>
-            <span className="section-eyebrow">How importing works</span>
+            <span className="section-eyebrow">How it works</span>
             <div className="mt-8 space-y-5">
-              <Step n="01" title="Pay the import price">
-                The price covers parsing your statements and generating the report.
-                Payment is handled by Stripe and no account is required.
+              <Step n="01" title="Choose your route">
+                If you have the financial statement PDFs, upload them yourself. If you
+                don't, we fetch the official statements from CreditSafe for you.
               </Step>
-              <Step n="02" title="Upload five years of statements">
-                Right after payment you land on a secure upload page. Add the official
-                financial statements for the last five years.
+              <Step n="02" title="Pay securely">
+                Payment is handled by Stripe and no account is required. The price covers
+                parsing the statements and generating the report.
               </Step>
-              <Step n="03" title="We parse and generate">
+              <Step n="03" title="Add the statements">
+                Upload five years of statements right after payment, or — with the
+                fetch option — simply wait while we retrieve them.
+              </Step>
+              <Step n="04" title="We parse and generate">
                 We extract the figures and build the same analyst-grade report you would
-                get for a company already in our dataset.
+                get for a company already in our dataset, then email the PDF.
               </Step>
-              <Step n="04" title="Optionally share your data">
-                Allow reuse of the figures and receive the data-sharing discount while
-                helping expand the catalogue.
+              <Step n="05" title="Optionally share your data">
+                When you upload statements yourself, you can allow reuse of the figures
+                and save €50 while helping expand the catalogue.
               </Step>
             </div>
           </div>
 
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <BuyBox kind="import" companyName={companyName} defaultShare={share === "1"} />
+            <ImportRoutes companyName={companyName} />
           </div>
         </div>
       </section>

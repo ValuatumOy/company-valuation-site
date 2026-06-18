@@ -8,12 +8,11 @@ company valuations.
 ## What it does
 
 - **Global company search** — search any company by name or business ID.
-- **Two purchase paths:**
-  - Company is in our dataset → buy an **existing report for €10**, generated instantly.
-  - Not in our dataset → **import five years of statements for €15**; pay first, then
-    upload PDFs (no registration), and we generate the report.
-- **Data-sharing discount** — let us reuse a company's figures for **€5 off** (import+share = €10); the
-  company is added to our catalogue automatically.
+- **Three purchase paths:**
+  - Company is in our dataset → buy an **existing report for €100**, generated instantly.
+  - Not in our dataset, but the user has PDFs → **import five years of statements for €150**; pay first, then upload PDFs (no registration), and we generate the report.
+  - No PDFs available → choose the **€200 data retrieval route**, where we retrieve the official financials via CreditSafe or another provider.
+- **Data-sharing discount** — let us reuse a company's figures for **€50 off** (import+share = €100); the company is added to our catalogue automatically.
 - **Stripe Checkout** — no account required; the report (or upload step) is delivered
   after payment.
 
@@ -82,6 +81,7 @@ All prices live in `src/lib/pricing.ts` and are overridable via env (EUR cents):
 
 | Env                     | Default | Meaning                              |
 | ----------------------- | ------- | ------------------------------------ |
-| `PRICE_EXISTING_REPORT` | `1000`  | €10 — we already hold the financials |
-| `PRICE_IMPORT_REPORT`   | `1500`  | €15 — user imports 5y statements     |
-| `PRICE_SHARE_DISCOUNT`  | `500`   | €5 off for sharing data (→ €10)      |
+| `PRICE_EXISTING_REPORT` | `10000` | €100 — we already hold the financials |
+| `PRICE_IMPORT_REPORT`   | `15000` | €150 — user imports 5y statements     |
+| `PRICE_SHARE_DISCOUNT`  | `5000`  | €50 off for sharing data (→ €100)     |
+| `PRICE_CREDITSAFE_REPORT` | `20000` | €200 — we retrieve the financials     |

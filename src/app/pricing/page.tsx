@@ -13,8 +13,8 @@ export default function PricingPage() {
             Simple, per-report pricing.
           </h1>
           <p className="section-sub mx-auto text-white/60">
-            No subscription, no seats. Pay only for the reports you need. Prices are
-            shown in EUR, with VAT handled at checkout where applicable.
+            No subscription, no seats. Pay only for the report you need — from €100.
+            Prices are shown in EUR, with VAT handled at checkout where applicable.
           </p>
         </div>
       </section>
@@ -30,15 +30,25 @@ export default function PricingPage() {
           <span className="section-eyebrow">Pricing FAQ</span>
           <h2 className="section-headline">Common pricing questions.</h2>
           <dl className="mt-10 space-y-4">
-            <Item q="Why is the import report more expensive?">
+            <Item q="Which price applies to me?">
+              €100 if we already hold the company's statements. If we don't: €150 when
+              you upload the statements yourself, or €100 if you let us reuse the figures.
+              €200 if you have no statements and we fetch them for you via CreditSafe.
+            </Item>
+            <Item q="Why is the import report more than the on-file report?">
               The import price covers parsing five years of financial statements from
               your PDFs before the report can be generated. When we already hold the
-              data, there is nothing to import.
+              data, there is nothing to import — so it costs less.
             </Item>
             <Item q="How does the data-sharing discount work?">
-              If you let us reuse a company's figures, we take the discount off and add
+              If you let us reuse an imported company's figures, we take €50 off and add
               the company to the catalogue so it can be valued again later. Only the
-              financial statement figures are stored.
+              financial statement figures are stored — bringing the import down to €100.
+            </Item>
+            <Item q="What is the €200 CreditSafe option?">
+              If you don't have the financial statements at all, we retrieve the official
+              figures from CreditSafe on your behalf and generate the report. The price
+              covers the data we purchase from the provider — you upload nothing.
             </Item>
             <Item q="Do I need an account?">
               No. Payment is handled by Stripe and the report, or the upload step for

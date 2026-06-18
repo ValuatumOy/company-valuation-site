@@ -27,8 +27,11 @@ export function Footer() {
             title="Product"
             links={[
               { href: "/reports", label: "Browse reports" },
+              { href: "/sample-report", label: "Sample report" },
+              { href: "/valuation-calculator", label: "Valuation calculator" },
+              { href: "/market-multiples", label: "Market multiples" },
+              { href: "/case-studies", label: "Case studies" },
               { href: "/pricing", label: "Pricing" },
-              { href: "/methodology", label: "Methodology" },
               { href: "/import", label: "Import statements" },
             ]}
           />

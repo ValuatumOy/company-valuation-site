@@ -133,14 +133,14 @@ export function SearchBar({ autoFocus = false }: { autoFocus?: boolean }) {
                   No match in our dataset for "{query}".
                 </p>
                 <p className="mt-1 text-sm font-light leading-6 text-ink-700/65">
-                  Import five years of financial statements and we will generate the
-                  same full valuation report.
+                  Continue to choose whether you upload the financial statement PDFs
+                  yourself, or we fetch the official figures for you.
                 </p>
                 <button
                   onClick={() => router.push(`/import?name=${encodeURIComponent(query)}`)}
                   className="primary-button mt-4"
                 >
-                  Import statements
+                  Choose data route
                 </button>
               </div>
             )

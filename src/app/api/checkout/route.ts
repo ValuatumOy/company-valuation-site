@@ -17,8 +17,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const kind: ReportKind = body.kind === "import" ? "import" : "existing";
-  const shareData = Boolean(body.shareData);
+  const kind: ReportKind =
+    body.kind === "import"
+      ? "import"
+      : body.kind === "creditsafe"
+        ? "creditsafe"
+        : "existing";
+  // Sharing only meaningful for imported statements.
+  const shareData = kind === "import" && Boolean(body.shareData);
   const companyName = body.companyName?.slice(0, 200) || "Selected company";
   const q = quote(kind, shareData);
 
@@ -54,7 +60,9 @@ export async function POST(req: Request) {
               name:
                 kind === "import"
                   ? `Import + AI valuation report — ${companyName}`
-                  : `AI valuation report — ${companyName}`,
+                  : kind === "creditsafe"
+                    ? `Data retrieval + AI valuation report — ${companyName}`
+                    : `AI valuation report — ${companyName}`,
               description: shareData
                 ? `Includes ${eur(q.discount)} data-sharing discount`
                 : undefined,

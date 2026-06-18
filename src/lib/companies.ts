@@ -12,8 +12,8 @@ export interface Company {
   industry: string;
   /**
    * Whether we already hold the financial statements for this company.
-   * - true  -> €10 "existing data" report, instant generation
-   * - false -> not in our offering yet; user must import 5y statements (€15)
+   * - true  -> €100 "existing data" report, instant generation
+   * - false -> user chooses upload (€150 / €100 with sharing) or fetch (€200)
    */
   hasFinancials: boolean;
   latestRevenueEur?: number;

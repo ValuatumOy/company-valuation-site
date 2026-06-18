@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     template: "%s | Valuatum AI Valuation Reports",
   },
   description:
-    "Instant, analyst-grade valuation reports for private companies. Search any Finnish company, or import five years of financial statements, and buy a full AI valuation report from EUR 10.",
+    "Instant, analyst-grade valuation reports for private companies. Search any Finnish company, import five years of financial statements, or let us fetch the data — and buy a full AI valuation report from EUR 100.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   openGraph: {
     title: "AI Valuation Reports for Private Companies",
     description:
-      "Search any company. Buy an analyst-grade AI valuation report in minutes from EUR 10.",
+      "Search any company. Buy an analyst-grade AI valuation report in minutes from EUR 100.",
     type: "website",
   },
 };
